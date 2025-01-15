@@ -1,0 +1,7 @@
+<p>home works!</p>
+
+@defer {
+  @for (pokemon of pokemons()?.results; track pokemon.name) {
+    <p>{{ pokemon.name }}</p>
+  }
+}
