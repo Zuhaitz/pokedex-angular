@@ -5,15 +5,13 @@ import {
   effect,
   inject,
   signal,
-  Signal,
 } from '@angular/core';
 import { PokemonService } from '../../services';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { Pokemon } from '../../models';
+import { PokemonCardComponent } from '../../components/pokemon-card/pokemon-card.component';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [PokemonCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,13 +23,9 @@ export class HomeComponent {
   pokemonService = inject(PokemonService);
   pokemons = computed(() => this.pokemonService.getFormattedPokemons());
 
-  constructor() {
-    effect(() => {
-      this.pokemonService.getPokemons(this.page() * this.limit, this.limit);
-    });
+  loadMorePokemons = effect(() => {
+    this.pokemonService.getPokemons(this.page() * this.limit, this.limit);
+  });
 
-    effect(() => {
-      console.log(this.pokemons());
-    });
-  }
+  loadMore = () => this.page.update((value) => value + 1);
 }

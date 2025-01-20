@@ -13,4 +13,5 @@ export interface Pokemon {
     front_default: string;
     back_default: string;
   };
+  types?: [{ id: number; name: string }];
 }

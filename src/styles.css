@@ -1,1 +1,94 @@
 /* You can add global styles to this file, and also import other style files */
+
+@layer base, components, utils;
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    accent-color: #30aa82;
+
+    font-family: "Sour Gummy", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+
+    user-select: none;
+  }
+
+  body,
+  a {
+    color: white;
+    background-color: #1e1e1e;
+  }
+
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* #app {
+    display: grid;
+    // grid-template-columns: repeat(1, 1fr);
+    grid:
+      "header" auto
+      "main" 1fr
+      / 1fr;
+
+    min-height: 100vh;
+  } */
+}
+
+@layer components {
+  .page-title {
+    width: fit-content;
+    padding-bottom: 0.5rem;
+    margin: 1rem;
+    margin-bottom: 2rem;
+
+    font-size: 2rem;
+    text-wrap: balance;
+    text-align: center;
+
+    border-bottom: 2px solid #30aa82;
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      text-decoration: underline;
+      border-bottom: 1px solid #30aa82;
+      padding-bottom: 0;
+    }
+  }
+}
+
+@layer utils {
+  .colored-text {
+    font-weight: bold;
+    color: #30aa82;
+  }
+
+  .flex-center {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+}

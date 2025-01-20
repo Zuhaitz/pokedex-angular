@@ -1,12 +1,13 @@
 <p>home works!</p>
 
-@defer {
-  @for (pokemon of pokemons(); track pokemon.id) {
-    <div (click)="pokemonService.getPokemonById(pokemon.id)">
-      <img [src]="pokemon.sprites?.front_default" />
-      <p>{{ pokemon.name }}</p>
+<section>
+  @defer {
+    <div class="pokedex">
+      @for (pokemon of pokemons(); track pokemon.id) {
+        <pokemon-card [id]="pokemon.id" />
+      }
     </div>
-  }
-}
 
-<button (click)="page.set(page() + 1)">Load More</button>
+    <button (click)="loadMore()">Load More</button>
+  }
+</section>
