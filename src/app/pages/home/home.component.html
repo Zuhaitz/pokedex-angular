@@ -1,7 +1,12 @@
 <p>home works!</p>
 
 @defer {
-  @for (pokemon of pokemons()?.results; track pokemon.name) {
-    <p>{{ pokemon.name }}</p>
+  @for (pokemon of pokemons(); track pokemon.id) {
+    <div (click)="pokemonService.getPokemonById(pokemon.id)">
+      <img [src]="pokemon.sprites?.front_default" />
+      <p>{{ pokemon.name }}</p>
+    </div>
   }
 }
+
+<button (click)="page.set(page() + 1)">Load More</button>
