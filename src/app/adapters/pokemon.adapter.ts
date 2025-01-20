@@ -1,8 +1,12 @@
-import { PokemonsPage } from '../models';
+import { Pokemon, PokemonsPage } from '../models';
 
-export const pokemonAdapter = (pokemons: PokemonsPage) => {
+export const pokemonListAdapter = (pokemons: PokemonsPage) => {
   return pokemons.results.map((p) => ({
-    ...p,
     id: Number(p.url.split('/').at(-2)),
+    name: p.name,
   }));
+};
+
+export const pokemonAdapter = (pokemon: Pokemon) => {
+  return { id: pokemon.id, name: pokemon.name, sprites: pokemon.sprites };
 };
