@@ -1,23 +1,27 @@
-.layout {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid:
-    "header" auto
-    "main" 1fr
-    "footer" auto
-    / 1fr;
+@layer component {
+  :host {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid:
+      "header" auto
+      "main" 1fr
+      "footer" auto
+      / 1fr;
 
-  min-height: 100vh;
-}
+    min-height: 100vh;
+  }
 
-.layout header {
-  grid-area: "header";
-}
+  header {
+    grid-area: "header";
+  }
 
-.layout .main {
-  grid-area: "main";
-}
+  .main {
+    grid-area: "main";
+    display: flex;
+    justify-content: center;
+  }
 
-.layout footer {
-  grid-area: "footer";
+  footer {
+    grid-area: "footer";
+  }
 }

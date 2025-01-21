@@ -1,9 +1,21 @@
-.pokedex {
-  display: grid;
-  width: min(1200px, 100%);
-  grid-template-columns: repeat(auto-fit, 180px);
-  gap: 10px;
-  padding: 10px;
+@layer component {
+  .pokedex {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+    column-gap: 10px;
+    row-gap: 20px;
+    justify-items: center;
 
-  background-color: white;
+    width: min(1260px, 100%);
+    padding: 20px;
+    margin: auto;
+
+    background-color: white;
+  }
+
+  @media (min-width: 1024px) {
+    .pokedex {
+      grid-template-columns: repeat(auto-fit, minmax(192px, 1fr));
+    }
+  }
 }

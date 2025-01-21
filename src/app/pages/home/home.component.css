@@ -1,1 +1,15 @@
+@layer component {
+  :host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+    width: 100%;
+  }
+
+  :host > section {
+    width: min(1460px, 100%);
+    background: white
+      url("https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png");
+  }
+}

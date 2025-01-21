@@ -1,9 +1,19 @@
 <div class="pokemon-card">
   <img [src]="pokemon()?.sprites?.front_default" [alt]="pokemon()?.name" />
-  <p>{{ pokemon()?.name }}</p>
-  <div class="pokemon-card__types">
-    @for (type of pokemon()?.types; track type.id) {
-      <p>{{ type.name }}</p>
-    }
+
+  <div class="pokemon-card__data">
+    <p class="pokemon-card__number">
+      Nº{{ pokemon()?.id?.toString()?.padStart(4, "0") }}
+    </p>
+
+    <p class="pokemon-card__name">{{ pokemon()?.name }}</p>
+
+    <div class="pokemon-card__types">
+      @for (type of pokemon()?.types; track type.id) {
+        <p [style]="{ 'background-color': types[type.name] }">
+          {{ type.name }}
+        </p>
+      }
+    </div>
   </div>
 </div>

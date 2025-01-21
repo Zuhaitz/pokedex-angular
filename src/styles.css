@@ -33,8 +33,10 @@
 
   body,
   a {
-    color: white;
-    background-color: #1e1e1e;
+    color: #1e1e1e;
+    background: #1e1e1e
+      url("https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png");
+    /* background-color: #1e1e1e; */
   }
 
   body {

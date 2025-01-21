@@ -1,6 +1,6 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
 import { PokemonService } from '../../services';
-import { Pokemon } from '../../models';
+import { TYPES } from '../../utils';
 
 @Component({
   selector: 'pokemon-card',
@@ -15,6 +15,8 @@ export class PokemonCardComponent {
   pokemon = computed(() =>
     this.pokemonService.getFormattedPokemonById(this.id()),
   );
+
+  types = TYPES;
 
   constructor() {
     effect(() => {
