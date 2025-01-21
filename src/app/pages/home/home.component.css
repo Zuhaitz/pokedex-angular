@@ -12,4 +12,20 @@
     background: white
       url("https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png");
   }
+
+  .load-btn {
+    margin: auto;
+    width: min(500px, 70%);
+  }
+
+  .load-btn > button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    width: 100%;
+
+    outline: none;
+    border: none;
+    color: white;
+    background-color: #30a7d7;
+  }
 }
