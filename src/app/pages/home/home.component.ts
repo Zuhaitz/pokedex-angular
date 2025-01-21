@@ -7,17 +7,17 @@ import {
   signal,
 } from '@angular/core';
 import { PokemonService } from '../../services';
-import { PokemonCardComponent } from '../../components/pokemon-card/pokemon-card.component';
+import { PokedexComponent } from '../../components';
 
 @Component({
   selector: 'app-home',
-  imports: [PokemonCardComponent],
+  imports: [PokedexComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  readonly limit = 20;
+  readonly limit = 24;
   page = signal(0);
 
   pokemonService = inject(PokemonService);

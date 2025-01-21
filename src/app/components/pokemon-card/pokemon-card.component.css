@@ -4,7 +4,8 @@
   justify-content: center;
   width: 100%;
 
-  padding: 5px;
+  /* padding: 5px; */
+  overflow: hidden;
   background-color: gray;
   border-radius: 10px;
   /* border: 2px solid wheat; */
@@ -18,7 +19,6 @@
   aspect-ratio: 1 / 1;
   image-rendering: pixelated;
 
-  border-radius: 10px;
   background-color: white;
 }
 

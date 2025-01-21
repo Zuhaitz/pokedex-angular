@@ -1,0 +1,5 @@
+<div class="pokedex">
+  @for (pokemon of pokemons(); track pokemon.id) {
+    <pokemon-card [id]="pokemon.id" />
+  }
+</div>

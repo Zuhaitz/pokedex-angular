@@ -2,12 +2,7 @@
 
 <section>
   @defer {
-    <div class="pokedex">
-      @for (pokemon of pokemons(); track pokemon.id) {
-        <pokemon-card [id]="pokemon.id" />
-      }
-    </div>
-
+    <pokedex [pokemons]="pokemons()" />
     <button (click)="loadMore()">Load More</button>
   }
 </section>
