@@ -1,5 +1,13 @@
 <div class="pokemon-card">
-  <img [src]="pokemon()?.sprites?.front_default" [alt]="pokemon()?.name" />
+  @if (pokemon()?.sprites?.front_default) {
+    <img
+      [src]="pokemon()?.sprites?.front_default"
+      [alt]="pokemon()?.name"
+      class="pokemon-card__icon"
+    />
+  } @else {
+    <div class="pokemon-card__icon"></div>
+  }
 
   <div class="pokemon-card__data">
     <p class="pokemon-card__number">

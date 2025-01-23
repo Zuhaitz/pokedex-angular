@@ -9,7 +9,7 @@
     border-radius: 10px;
   }
 
-  .pokemon-card > img {
+  .pokemon-card > .pokemon-card__icon {
     width: 100%;
     height: auto;
     object-fit: contain;
@@ -17,7 +17,6 @@
     image-rendering: pixelated;
 
     background-color: #f2f2f2;
-    color: #4592c4;
   }
 
   .pokemon-card__data {

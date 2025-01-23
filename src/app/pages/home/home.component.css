@@ -13,15 +13,42 @@
       url("https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png");
   }
 
+  :host > section > div {
+    position: relative;
+    margin: auto;
+    width: min(1260px, 100%);
+    background-color: white;
+  }
+
+  .end-notch {
+    --height: 0.8rem;
+
+    content: "";
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    bottom: calc(var(--height) * -0.7);
+
+    transform: translateX(-50%);
+    height: var(--height);
+    width: min(800px, 60%);
+
+    background-color: white;
+    border-radius: 0 0 25px 25px;
+  }
+
   .load-btn {
     margin: auto;
-    width: min(500px, 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
   }
 
   .load-btn > button {
     font-size: 1.2rem;
     padding: 10px 20px;
-    width: 100%;
+    width: min(500px, 70%);
 
     outline: none;
     border: none;
