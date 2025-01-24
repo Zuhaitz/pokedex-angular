@@ -19,6 +19,11 @@
     text-decoration: none;
     text-align: center;
     text-wrap: balance;
+    transition: all 0.2s linear;
+  }
+
+  .nav-link:hover {
+    background-color: #e2e2e2;
   }
 
   .nav-link-active {
