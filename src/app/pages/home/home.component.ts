@@ -24,7 +24,7 @@ export class HomeComponent {
   pokemons = computed(() => this.pokemonService.getFormattedPokemons());
 
   loadMorePokemons = effect(() => {
-    if (this.pokemons().length > 0) return;
+    // if (this.pokemons().length > 0) return;
     this.pokemonService.getPokemons(this.page() * this.limit, this.limit);
   });
 
