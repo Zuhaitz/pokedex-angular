@@ -5,6 +5,7 @@
     routerLink="/"
     class="nav-link"
     routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: true }"
     #homeLink="routerLinkActive"
     [style]="homeLink.isActive ? { 'background-color': '#e3350d' } : {}"
   >
@@ -19,6 +20,7 @@
     routerLink="/about"
     class="nav-link"
     routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: true }"
     #aboutLink="routerLinkActive"
     [style]="aboutLink.isActive ? { 'background-color': '#ee6b2f' } : {}"
   >

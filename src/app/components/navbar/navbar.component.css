@@ -6,8 +6,10 @@
   }
 
   .nav-links {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    width: 100%;
 
     display: none;
   }
@@ -20,16 +22,20 @@
   }
 
   .nav-link-active {
-    position: relative;
     color: white;
   }
 
   .nav-link-active .link__bottom {
+    --size: 3px;
     position: absolute;
     z-index: 1;
-    bottom: -2px;
-    height: 2px;
-    width: 100vw;
+
+    left: 50%;
+    bottom: calc(var(--size) * -1);
+    transform: translateX(-50%);
+
+    width: 100%;
+    height: var(--size);
   }
 
   .nav-link div {
