@@ -1,0 +1,52 @@
+@layer component {
+  :host {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+
+    display: none;
+  }
+
+  .nav-link {
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .nav-link-active {
+    position: relative;
+    color: white;
+  }
+
+  .nav-link-active .link__bottom {
+    position: absolute;
+    z-index: 1;
+    bottom: -2px;
+    height: 2px;
+    width: 100vw;
+  }
+
+  .nav-link div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    padding: 8px 20px;
+  }
+
+  @media (min-width: 1024px) {
+    .toggle-nav {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+    }
+  }
+}

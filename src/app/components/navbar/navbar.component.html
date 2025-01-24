@@ -1,0 +1,33 @@
+<!-- <p>Angu<span>Dex</span></p> -->
+
+<nav class="nav-links">
+  <a
+    routerLink="/"
+    class="nav-link"
+    routerLinkActive="nav-link-active"
+    #homeLink="routerLinkActive"
+    [style]="homeLink.isActive ? { 'background-color': '#e3350d' } : {}"
+  >
+    <div>
+      <pokeball-svg [color]="homeLink.isActive ? '#fff' : '#1e1e1e'" />
+      <span>Pokedex</span>
+      <span class="link__bottom" style="background-color: #e3350d"></span>
+    </div>
+  </a>
+
+  <a
+    routerLink="/about"
+    class="nav-link"
+    routerLinkActive="nav-link-active"
+    #aboutLink="routerLinkActive"
+    [style]="aboutLink.isActive ? { 'background-color': '#ee6b2f' } : {}"
+  >
+    <div>
+      <pokeball-svg [color]="aboutLink.isActive ? '#fff' : '#1e1e1e'" />
+      <p>About</p>
+      <span class="link__bottom" style="background-color: #ee6b2f"></span>
+    </div>
+  </a>
+</nav>
+
+<input type="checkbox" name="burger" id="burger" class="toggle-nav" />
