@@ -1,7 +1,12 @@
 <p class="page-title">Angu<span>Dex</span></p>
 
 <label for="burger" class="toggle-nav">
-  <input type="checkbox" name="burger" id="burger" />
+  <input
+    type="checkbox"
+    name="burger"
+    id="burger"
+    (input)="getChecked($event)"
+  />
   <div class="toggle-nav-icon">
     <img src="assets/icons/menu.svg" alt="burger menu" />
   </div>
@@ -13,6 +18,7 @@
   </label>
 
   <a
+    (click)="setChecked()"
     routerLink="/"
     class="nav-link"
     routerLinkActive="nav-link-active"
@@ -27,6 +33,7 @@
   </a>
 
   <a
+    (click)="setChecked()"
     routerLink="/about"
     class="nav-link"
     routerLinkActive="nav-link-active"

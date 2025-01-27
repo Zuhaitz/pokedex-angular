@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PokeballSVG } from '../../../assets/icons/pokeball-svg.component';
 
@@ -8,4 +8,14 @@ import { PokeballSVG } from '../../../assets/icons/pokeball-svg.component';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  checked: HTMLInputElement | undefined;
+
+  getChecked(event: Event) {
+    this.checked = event.target as HTMLInputElement;
+  }
+
+  setChecked() {
+    this.checked!.checked = false;
+  }
+}
