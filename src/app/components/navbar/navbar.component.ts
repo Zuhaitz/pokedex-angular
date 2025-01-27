@@ -9,13 +9,17 @@ import { PokeballSVG } from '../../../assets/icons/pokeball-svg.component';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  checked: HTMLInputElement | undefined;
+  checkbox: HTMLInputElement = document.getElementById(
+    'burger',
+  ) as HTMLInputElement;
 
-  getChecked(event: Event) {
-    this.checked = event.target as HTMLInputElement;
+  constructor() {
+    effect(() => {
+      this.checkbox = document.getElementById('burger') as HTMLInputElement;
+    });
   }
 
-  setChecked() {
-    this.checked!.checked = false;
+  setUnchecked() {
+    this.checkbox.checked = false;
   }
 }
