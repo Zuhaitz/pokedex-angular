@@ -1,24 +1,89 @@
 @layer component {
   :host {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     height: 100%;
+    padding: 5px 10px;
+
+    border-bottom: 2px solid #d4d4d4;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .page-title > span {
+    color: #e3350d;
+  }
+
+  .toggle-nav > input {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .toggle-nav-icon {
+    width: 2rem;
+  }
+
+  .toggle-nav-icon > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    aspect-ratio: 1 / 1;
+  }
+
+  .toggle-nav:has(input:checked) ~ .nav-links {
+    top: 0;
+    height: fit-content;
+  }
+
+  .toggle-nav:has(input:checked) ~ .nav-links::before {
+    pointer-events: all;
+    opacity: 0.4;
   }
 
   .nav-links {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    position: absolute;
+    display: block;
+    right: 0px;
+    top: -200px;
+    width: 100vw;
+    height: fit-content;
 
-    display: none;
+    background-color: white;
+    transition: top 0.2s ease-in-out;
+  }
+
+  .nav-links::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    height: 150vh;
+    width: 100vw;
+
+    pointer-events: none;
+
+    background-color: black;
+    opacity: 0;
+
+    transition: opacity 0.2s linear;
   }
 
   .nav-link {
+    font-size: 1.2rem;
     font-weight: bold;
     text-decoration: none;
     text-align: center;
     text-wrap: balance;
+
     transition: all 0.2s linear;
   }
 
@@ -26,38 +91,99 @@
     background-color: #e2e2e2;
   }
 
-  .nav-link-active {
+  .nav-link > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 8px 20px;
+  }
+
+  .nav-link > div > pokeball-svg {
+    position: absolute;
+    left: 10px;
+  }
+
+  .nav-link-active > div {
     color: white;
   }
 
-  .nav-link-active .link__bottom {
+  .close-burger {
+    display: flex;
+    justify-content: end;
+    padding: 5px 10px;
+  }
+
+  .close-burger > label {
+  }
+
+  /* .nav-link-active .link__bottom {
     --size: 3px;
     position: absolute;
     z-index: 1;
 
-    left: 50%;
+    left: 0;
     bottom: calc(var(--size) * -1);
     transform: translateX(-50%);
 
-    width: 100%;
+    height: 100%;
     height: var(--size);
-  }
-
-  .nav-link div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 120px;
-    padding: 8px 20px;
-  }
+  } */
 
   @media (min-width: 1024px) {
+    :host {
+      padding: 0;
+    }
+
+    .page-title {
+      display: none;
+    }
+
+    .toggle-nav:has(input:checked) ~ .nav-links::before {
+      pointer-events: none;
+      opacity: 0;
+    }
+
     .toggle-nav {
       display: none;
     }
 
+    .close-burger {
+      display: none;
+    }
+
     .nav-links {
+      position: relative;
+      top: 0;
       display: flex;
+      justify-content: center;
+      width: 200%;
+    }
+
+    .nav-link > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 120px;
+      padding: 8px 20px;
+    }
+
+    .nav-link > div > pokeball-svg {
+      position: relative;
+      left: 0;
+    }
+
+    .nav-link-active .link__bottom {
+      --size: 3px;
+      position: absolute;
+      z-index: 1;
+
+      left: 50%;
+      bottom: calc(var(--size) * -1);
+      transform: translateX(-50%);
+
+      width: 100%;
+      height: var(--size);
     }
   }
 }

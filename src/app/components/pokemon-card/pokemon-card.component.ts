@@ -18,6 +18,10 @@ export class PokemonCardComponent {
 
   types = TYPES;
 
+  log = () => {
+    console.log('ME');
+  };
+
   constructor() {
     effect(() => {
       this.pokemonService.getPokemonById(this.id());

@@ -1,17 +1,27 @@
-<!-- <p>Angu<span>Dex</span></p> -->
+<p class="page-title">Angu<span>Dex</span></p>
+
+<label for="burger" class="toggle-nav">
+  <input type="checkbox" name="burger" id="burger" />
+  <div class="toggle-nav-icon">
+    <img src="assets/icons/menu.svg" alt="burger menu" />
+  </div>
+</label>
 
 <nav class="nav-links">
+  <label for="burger" class="close-burger">
+    <img src="assets/icons/x.svg" alt="close burger" />
+  </label>
+
   <a
     routerLink="/"
     class="nav-link"
     routerLinkActive="nav-link-active"
     [routerLinkActiveOptions]="{ exact: true }"
     #homeLink="routerLinkActive"
-    [style]="homeLink.isActive ? { 'background-color': '#e3350d' } : {}"
   >
-    <div>
+    <div [style]="homeLink.isActive ? { 'background-color': '#e3350d' } : {}">
       <pokeball-svg [color]="homeLink.isActive ? '#fff' : '#1e1e1e'" />
-      <span>Pokedex</span>
+      <p>Pokedex</p>
       <span class="link__bottom" style="background-color: #e3350d"></span>
     </div>
   </a>
@@ -22,14 +32,11 @@
     routerLinkActive="nav-link-active"
     [routerLinkActiveOptions]="{ exact: true }"
     #aboutLink="routerLinkActive"
-    [style]="aboutLink.isActive ? { 'background-color': '#ee6b2f' } : {}"
   >
-    <div>
+    <div [style]="aboutLink.isActive ? { 'background-color': '#ee6b2f' } : {}">
       <pokeball-svg [color]="aboutLink.isActive ? '#fff' : '#1e1e1e'" />
       <p>About</p>
       <span class="link__bottom" style="background-color: #ee6b2f"></span>
     </div>
   </a>
 </nav>
-
-<input type="checkbox" name="burger" id="burger" class="toggle-nav" />
