@@ -78,35 +78,9 @@
     transition: opacity 0.2s linear;
   }
 
-  .nav-link {
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
-    text-wrap: balance;
-
-    transition: all 0.2s linear;
-  }
-
-  .nav-link:hover {
-    background-color: #e2e2e2;
-  }
-
-  .nav-link > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 8px 20px;
-  }
-
   .nav-link__icon {
     position: absolute;
     left: 10px;
-  }
-
-  .nav-link-active > div {
-    color: white;
   }
 
   .close-burger {
@@ -158,19 +132,6 @@
       height: 100vh;
       width: 100vw;
     }
-
-    .nav-link-active .link__bottom {
-      --size: 3px;
-      position: absolute;
-      z-index: 1;
-
-      top: 0;
-      left: calc(var(--size) * -1);
-      transform: translateX(0%);
-
-      height: 100%;
-      width: var(--size);
-    }
   }
 
   @media (min-width: 1024px) {
@@ -180,7 +141,10 @@
     }
 
     .page-title {
-      display: none;
+      /* display: none; */
+      position: absolute;
+      left: 20px;
+      font-size: 2rem;
     }
 
     .toggle-nav {
@@ -211,37 +175,36 @@
       height: fit-content;
 
       overflow: visible;
+
+      background: none;
     }
 
     .nav-links::before {
       content: none;
     }
 
-    .nav-link > div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 120px;
-      padding: 8px 20px;
-    }
-
     .nav-link__icon {
       position: relative;
       left: 0;
+
+      animation: scaleDown 0.1s linear both;
+      animation-timeline: scroll();
     }
 
-    .nav-link-active .link__bottom {
-      --size: 3px;
-      position: absolute;
-      z-index: 1;
+    @keyframes scaleDown {
+      0%,
+      10% {
+        scale: 1;
+        opacity: 1;
+        height: 24px;
+      }
 
-      top: auto;
-      left: 50%;
-      bottom: calc(var(--size) * -1);
-      transform: translateX(-50%);
-
-      width: 100%;
-      height: var(--size);
+      30%,
+      100% {
+        scale: 0;
+        opacity: 0;
+        height: 0;
+      }
     }
   }
 }

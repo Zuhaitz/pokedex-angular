@@ -10,17 +10,12 @@ import { TYPES } from '../../utils';
 })
 export class PokemonCardComponent {
   id = input(0);
+  types = TYPES;
 
   pokemonService = inject(PokemonService);
   pokemon = computed(() =>
     this.pokemonService.getFormattedPokemonById(this.id()),
   );
-
-  types = TYPES;
-
-  log = () => {
-    console.log('ME');
-  };
 
   constructor() {
     effect(() => {

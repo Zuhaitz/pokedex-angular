@@ -22,7 +22,10 @@
     color="#e3350d"
     (linkClick)="setUnchecked()"
   >
-    <pokeball-svg class="nav-link__icon" />
+    <pokeball-svg
+      class="nav-link__icon"
+      [color]="route() === '/' ? '#fff' : '#1e1e1e'"
+    />
   </nav-link>
 
   <nav-link
@@ -31,6 +34,9 @@
     color="#ee6b2f"
     (linkClick)="setUnchecked()"
   >
-    <pokeball-svg class="nav-link__icon" />
+    <pokeball-svg
+      class="nav-link__icon"
+      [color]="route() === '/about' ? '#fff' : '#1e1e1e'"
+    />
   </nav-link>
 </nav>
