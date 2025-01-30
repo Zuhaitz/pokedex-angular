@@ -1,4 +1,4 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PokeballSVG } from '../../../assets/icons/pokeball-svg.component';
 
@@ -9,9 +9,7 @@ import { PokeballSVG } from '../../../assets/icons/pokeball-svg.component';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  checkbox: HTMLInputElement = document.getElementById(
-    'burger',
-  ) as HTMLInputElement;
+  checkbox = document.getElementById('burger') as HTMLInputElement;
 
   constructor() {
     effect(() => {
