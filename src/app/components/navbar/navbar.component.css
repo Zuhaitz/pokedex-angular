@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
+    height: 3rem;
     padding: 5px 10px;
 
     border-bottom: 2px solid #d4d4d4;
@@ -32,7 +32,7 @@
     width: 2rem;
   }
 
-  .toggle-nav-icon > img {
+  .toggle-nav-icon img {
     width: 100%;
     height: auto;
     object-fit: contain;
@@ -111,38 +111,89 @@
   .close-burger {
     display: flex;
     justify-content: end;
+    align-items: center;
     padding: 5px 10px;
+    height: 3rem;
   }
 
-  /* .nav-link-active .link__bottom {
-    --size: 3px;
-    position: absolute;
-    z-index: 1;
+  .close-burger-icon {
+    width: 2rem;
+  }
 
-    left: 0;
-    bottom: calc(var(--size) * -1);
-    transform: translateX(-50%);
+  .close-burger-icon img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 
-    height: 100%;
-    height: var(--size);
-  } */
+    aspect-ratio: 1 / 1;
+  }
+
+  @media (min-width: 640px) {
+    .toggle-nav:has(input:checked) ~ .nav-links {
+      width: 250px;
+      height: 100vh;
+
+      overflow: visible;
+    }
+
+    .nav-links {
+      position: absolute;
+      display: block;
+      right: 0;
+      top: 0;
+      width: 0;
+      height: 100vh;
+
+      overflow: hidden;
+
+      transition: width 0.2s ease-in-out;
+    }
+
+    .nav-links::before {
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .nav-link-active .link__bottom {
+      --size: 3px;
+      position: absolute;
+      z-index: 1;
+
+      top: 0;
+      left: calc(var(--size) * -1);
+      transform: translateX(0%);
+
+      height: 100%;
+      width: var(--size);
+    }
+  }
 
   @media (min-width: 1024px) {
     :host {
       padding: 0;
+      height: fit-content;
     }
 
     .page-title {
       display: none;
     }
 
+    .toggle-nav {
+      display: none;
+    }
+
+    .toggle-nav:has(input:checked) ~ .nav-links {
+      width: 100%;
+      height: fit-content;
+    }
+
     .toggle-nav:has(input:checked) ~ .nav-links::before {
       pointer-events: none;
       opacity: 0;
-    }
-
-    .toggle-nav {
-      display: none;
     }
 
     .close-burger {
@@ -154,7 +205,15 @@
       top: 0;
       display: flex;
       justify-content: center;
-      width: 200%;
+      align-items: center;
+      width: 100%;
+      height: fit-content;
+
+      overflow: visible;
+    }
+
+    .nav-links::before {
+      content: none;
     }
 
     .nav-link > div {
@@ -175,6 +234,7 @@
       position: absolute;
       z-index: 1;
 
+      top: auto;
       left: 50%;
       bottom: calc(var(--size) * -1);
       transform: translateX(-50%);
