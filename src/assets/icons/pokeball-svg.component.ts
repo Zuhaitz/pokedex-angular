@@ -24,5 +24,6 @@ import { Component, input } from '@angular/core';
   </svg>`,
 })
 export class PokeballSVG {
-  color = input('#1e1e1e');
+  // color = input('#1e1e1e');
+  color = input('#fff');
 }

@@ -1,0 +1,74 @@
+@layer components {
+  :host:has(.nav-link:hover) {
+    transition:
+      background 0.2s linear,
+      color 0.2s linear;
+
+    background-color: #e2e2e2;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    text-wrap: balance;
+
+    transition: all 0.2s linear;
+  }
+
+  .nav-link:hover {
+    background: #e2e2e2;
+  }
+
+  .nav-link > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 8px 20px;
+  }
+
+  .nav-link-active > div {
+    color: white;
+  }
+
+  @media (min-width: 640px) {
+    .nav-link-active .link__bottom {
+      --size: 3px;
+      position: absolute;
+      z-index: 1;
+
+      top: 0;
+      left: calc(var(--size) * -1);
+      transform: translateX(0%);
+
+      height: 100%;
+      width: var(--size);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .nav-link > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 120px;
+      padding: 8px 20px;
+    }
+
+    .nav-link-active .link__bottom {
+      --size: 3px;
+      position: absolute;
+      z-index: 1;
+
+      top: auto;
+      left: 50%;
+      bottom: calc(var(--size) * -1);
+      transform: translateX(-50%);
+
+      width: 100%;
+      height: var(--size);
+    }
+  }
+}

@@ -16,33 +16,21 @@
     </label>
   </div>
 
-  <a
-    (click)="setUnchecked()"
-    routerLink="/"
-    class="nav-link"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    #homeLink="routerLinkActive"
+  <nav-link
+    path="/"
+    title="Pokedex"
+    color="#e3350d"
+    (linkClick)="setUnchecked()"
   >
-    <div [style]="homeLink.isActive ? { 'background-color': '#e3350d' } : {}">
-      <pokeball-svg [color]="homeLink.isActive ? '#fff' : '#1e1e1e'" />
-      <p>Pokedex</p>
-      <span class="link__bottom" style="background-color: #e3350d"></span>
-    </div>
-  </a>
+    <pokeball-svg class="nav-link__icon" />
+  </nav-link>
 
-  <a
-    (click)="setUnchecked()"
-    routerLink="/about"
-    class="nav-link"
-    routerLinkActive="nav-link-active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    #aboutLink="routerLinkActive"
+  <nav-link
+    path="/about"
+    title="About"
+    color="#ee6b2f"
+    (linkClick)="setUnchecked()"
   >
-    <div [style]="aboutLink.isActive ? { 'background-color': '#ee6b2f' } : {}">
-      <pokeball-svg [color]="aboutLink.isActive ? '#fff' : '#1e1e1e'" />
-      <p>About</p>
-      <span class="link__bottom" style="background-color: #ee6b2f"></span>
-    </div>
-  </a>
+    <pokeball-svg class="nav-link__icon" />
+  </nav-link>
 </nav>

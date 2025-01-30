@@ -1,0 +1,15 @@
+<a
+  (click)="linkClick.emit()"
+  routerLink="{{ path() }}"
+  class="nav-link"
+  routerLinkActive="nav-link-active"
+  [routerLinkActiveOptions]="{ exact: true }"
+  #activeLink="routerLinkActive"
+>
+  <div [style]="activeLink.isActive ? { 'background-color': color() } : {}">
+    <!-- <pokeball-svg [color]="homeLink.isActive ? '#fff' : '#1e1e1e'" /> -->
+    <ng-content />
+    <p>{{ title() }}</p>
+    <span class="link__bottom" [style]="{ 'background-color': color() }"></span>
+  </div>
+</a>

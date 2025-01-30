@@ -100,7 +100,7 @@
     padding: 8px 20px;
   }
 
-  .nav-link > div > pokeball-svg {
+  .nav-link__icon {
     position: absolute;
     left: 10px;
   }
@@ -225,7 +225,7 @@
       padding: 8px 20px;
     }
 
-    .nav-link > div > pokeball-svg {
+    .nav-link__icon {
       position: relative;
       left: 0;
     }
