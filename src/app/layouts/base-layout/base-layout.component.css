@@ -27,5 +27,8 @@
 
   footer {
     grid-area: "footer";
+    margin-top: 40px;
+    color: white;
+    background-color: #1f1f1f;
   }
 }

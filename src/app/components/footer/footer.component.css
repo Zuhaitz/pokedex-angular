@@ -1,0 +1,11 @@
+@layer components {
+  .footer__container {
+    width: min(1000px, 100%);
+    margin: auto;
+    padding: 20px;
+
+    h2 {
+      color: aqua;
+    }
+  }
+}
