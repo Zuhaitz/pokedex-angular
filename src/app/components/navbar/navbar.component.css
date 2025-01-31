@@ -187,6 +187,10 @@
       position: relative;
       left: 0;
 
+      scale: 1;
+      opacity: 1;
+      height: 24px;
+
       animation: scaleDown 0.1s linear both;
       animation-timeline: scroll();
     }
