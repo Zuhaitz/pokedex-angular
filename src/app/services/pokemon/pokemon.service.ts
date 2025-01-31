@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal, untracked } from '@angular/core';
-import { map } from 'rxjs';
+import { catchError, map, retry, throwError } from 'rxjs';
 
 import { Pokemon, PokemonsPage } from '../../models';
 import { pokemonAdapter, pokemonListAdapter } from '../../adapters';
@@ -36,7 +36,15 @@ export class PokemonService {
         .get<PokemonsPage>(this.apiUrl, {
           params: { offset, limit },
         })
-        .pipe(map((pokemons: PokemonsPage) => pokemonListAdapter(pokemons)))
+        .pipe(
+          retry(2),
+          catchError((err) => {
+            console.error(err);
+            this.state.set({ ...this.state(), isLoading: false });
+            return throwError(() => new Error("Couldn't load pokemons"));
+          }),
+          map((pokemons: PokemonsPage) => pokemonListAdapter(pokemons)),
+        )
         .subscribe((res) => {
           // Empty list before getting new page
           // this.state().pokemons.clear();
@@ -60,7 +68,15 @@ export class PokemonService {
 
       this.http
         .get<Pokemon>(this.apiUrl + id)
-        .pipe(map((pokemon: Pokemon) => pokemonAdapter(pokemon)))
+        .pipe(
+          retry(2),
+          catchError((err) => {
+            console.error(err);
+            this.state.set({ ...this.state(), isLoading: false });
+            return throwError(() => new Error("Couldn't load pokemon data"));
+          }),
+          map((pokemon: Pokemon) => pokemonAdapter(pokemon)),
+        )
         .subscribe((res) => {
           this.state().pokemons.set(id, res);
 
