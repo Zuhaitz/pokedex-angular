@@ -1,0 +1,32 @@
+@layer component {
+  :host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+  }
+
+  section {
+    position: relative;
+    width: min(1440px, 100%);
+    background: white
+      url("https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png");
+  }
+
+  .end-notch {
+    --height: 0.8rem;
+
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    bottom: calc(var(--height) * -0.7);
+
+    transform: translateX(-50%);
+    height: var(--height);
+    width: min(800px, 70%);
+
+    background-color: white;
+    border-radius: 0 0 25px 25px;
+  }
+}

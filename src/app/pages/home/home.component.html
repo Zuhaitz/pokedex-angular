@@ -1,13 +1,10 @@
-<section>
-  <div>
-    @defer {
-      <pokedex [pokemons]="pokemonState().pokemons" />
-      <div class="load-btn">
-        <button (click)="loadMore()" [disabled]="pokemonState().isLoading">
-          Load More
-        </button>
-      </div>
-    }
-    <div class="end-notch"></div>
-  </div>
+<section class="pokedex">
+  @defer {
+    <pokedex [pokemons]="pokemonState().pokemons" />
+    <div class="load-btn">
+      <button (click)="loadMore()" [disabled]="pokemonState().isLoading">
+        Load More
+      </button>
+    </div>
+  }
 </section>

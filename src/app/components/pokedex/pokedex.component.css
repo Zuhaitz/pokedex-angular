@@ -1,4 +1,8 @@
 @layer component {
+  :host {
+    width: 100%;
+  }
+
   .pokedex {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
@@ -6,18 +10,19 @@
     row-gap: 20px;
     justify-items: center;
 
-    width: min(1260px, 100%);
-    padding: 20px 0;
+    width: min(1280px, 100%);
+    padding: 20px 8px;
     margin: auto;
 
     background-color: white;
   }
 
+  /* 
   @media (min-width: 640px) {
     .pokedex {
       padding: 20px;
     }
-  }
+  } */
 
   @media (min-width: 1024px) {
     .pokedex {

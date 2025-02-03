@@ -1,40 +1,8 @@
 @layer component {
-  :host {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: 100%;
-  }
-
-  :host > section {
-    width: min(1460px, 100%);
-    background: white
-      url("https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png");
-  }
-
-  :host > section > div {
-    position: relative;
+  .pokedex {
+    width: min(1280px, 100%);
     margin: auto;
-    width: min(1260px, 100%);
     background-color: white;
-  }
-
-  .end-notch {
-    --height: 0.8rem;
-
-    content: "";
-    margin: auto;
-    position: absolute;
-    left: 50%;
-    bottom: calc(var(--height) * -0.7);
-
-    transform: translateX(-50%);
-    height: var(--height);
-    width: min(800px, 60%);
-
-    background-color: white;
-    border-radius: 0 0 25px 25px;
   }
 
   .load-btn {
@@ -42,7 +10,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding: 30px;
+    width: 100%;
   }
 
   .load-btn > button {
