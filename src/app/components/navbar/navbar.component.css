@@ -8,6 +8,7 @@
 
     background-color: white;
     border-bottom: 2px solid #d4d4d4;
+    overflow: hidden;
   }
 
   .page-title {
@@ -43,7 +44,6 @@
 
   .toggle-nav:has(input:checked) ~ .nav-links {
     top: 0;
-    height: fit-content;
   }
 
   .toggle-nav:has(input:checked) ~ .nav-links::before {
@@ -58,6 +58,7 @@
     top: -200px;
     width: 100vw;
     height: fit-content;
+    overflow: hidden;
 
     background-color: white;
     transition: top 0.2s ease-in-out;
