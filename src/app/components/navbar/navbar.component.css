@@ -191,24 +191,24 @@
       opacity: 1;
       height: 24px;
 
-      animation: scaleDown 0.1s linear both;
-      animation-timeline: scroll();
+      animation: scaleDown linear forwards;
+      animation-timeline: view();
+      animation-range-start: 100vh;
+      animation-range-end: 120vh;
     }
+  }
+}
 
-    @keyframes scaleDown {
-      0%,
-      10% {
-        scale: 1;
-        opacity: 1;
-        height: 24px;
-      }
+@keyframes scaleDown {
+  from {
+    scale: 1;
+    opacity: 1;
+    height: 24px;
+  }
 
-      30%,
-      100% {
-        scale: 0;
-        opacity: 0;
-        height: 0;
-      }
-    }
+  to {
+    scale: 0;
+    opacity: 0;
+    height: 0;
   }
 }
