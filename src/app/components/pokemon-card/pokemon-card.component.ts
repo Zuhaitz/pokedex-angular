@@ -28,6 +28,9 @@ export class PokemonCardComponent {
 
   constructor() {
     effect(() => {
+      if (this.id() === 1) console.log(this.pokemon());
+    });
+    effect(() => {
       // Untrack so it doesn't execute when updating signals inside method
       untracked(() => this.pokemonService.getPokemonById(this.id()));
     });

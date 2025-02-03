@@ -1,7 +1,7 @@
 @layer component {
-  :host {
-    height: 30px;
-    width: 100%;
-    background-color: aqua;
+  .pokemon-data {
+    width: min(1280px, 100%);
+    margin: auto;
+    background-color: white;
   }
 }

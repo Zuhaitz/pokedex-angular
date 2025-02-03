@@ -5,6 +5,12 @@ import { catchError, map, retry, throwError } from 'rxjs';
 import { Pokemon, PokemonsPage } from '../../models';
 import { pokemonAdapter, pokemonListAdapter } from '../../adapters';
 
+type PokemonState = {
+  isLoading: boolean;
+  pokemons: Map<number, Pokemon>;
+  pokemon: Pokemon;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -15,12 +21,14 @@ export class PokemonService {
   state = signal({
     isLoading: false,
     pokemons: new Map<number, Pokemon>(),
-  });
+    pokemon: {} as Pokemon,
+  } as PokemonState);
 
   clear() {
     this.state.set({
       isLoading: false,
       pokemons: new Map<number, Pokemon>(),
+      pokemon: {} as Pokemon,
     });
   }
 
@@ -35,6 +43,11 @@ export class PokemonService {
     return this.state().pokemons.get(id);
   }
 
+  getPokemonData() {
+    return this.state().pokemon;
+  }
+
+  // API CALLS
   getPokemons(offset: number = 0, limit: number = 20): void {
     this.state.set({ ...this.state(), isLoading: true });
 
@@ -61,6 +74,7 @@ export class PokemonService {
 
         // To notify everyone to update
         this.state.set({
+          ...this.state(),
           pokemons: this.state().pokemons,
           isLoading: true,
         });
@@ -86,7 +100,34 @@ export class PokemonService {
 
         // To notify everyone to update
         this.state.set({
+          ...this.state(),
           pokemons: this.state().pokemons,
+          isLoading: false,
+        });
+      });
+  }
+
+  getPokemonDataById(id: number): void {
+    this.state.set({ ...this.state(), isLoading: true });
+
+    this.http
+      .get<Pokemon>(this.apiUrl + id)
+      .pipe(
+        retry(2),
+        catchError((err) => {
+          console.error(err);
+          this.state.set({ ...this.state(), isLoading: false });
+          return throwError(() => new Error("Couldn't load pokemon data"));
+        }),
+        map((pokemon: Pokemon) => pokemonAdapter(pokemon)),
+      )
+      .subscribe((res) => {
+        this.state().pokemon = res;
+
+        // To notify everyone to update
+        this.state.set({
+          ...this.state(),
+          pokemon: this.state().pokemon,
           isLoading: false,
         });
       });
