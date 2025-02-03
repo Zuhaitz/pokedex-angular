@@ -9,6 +9,7 @@ export const routes: Routes = [
     component: BaseLayoutComponent,
     children: [
       { path: '', component: HomeComponent },
+      { path: 'pokemon/:id', component: AboutComponent },
       { path: 'about', component: AboutComponent },
     ],
   },
