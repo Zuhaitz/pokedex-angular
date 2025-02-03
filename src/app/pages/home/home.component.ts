@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { PokemonService } from '../../services';
 import { PokedexComponent } from '../../components';
-import { Pokemon } from '../../models';
 
 @Component({
   selector: 'app-home',
@@ -19,17 +18,18 @@ import { Pokemon } from '../../models';
 })
 export class HomeComponent {
   readonly limit = 24;
-  page = signal(0);
+  page = 0;
 
   pokemonService = inject(PokemonService);
-  // pokemons = computed(() => this.pokemonService.getFormattedPokemons());
-  // isLoading = computed(() => this.pokemonService.getIsLoading());
   pokemonState = computed(() => this.pokemonService.getState());
 
-  loadMorePokemons = effect(() => {
-    // if (this.pokemons().length > 0) return;
-    this.pokemonService.getPokemons(this.page() * this.limit, this.limit);
-  });
+  constructor() {
+    this.pokemonService.clear();
+    this.pokemonService.getPokemons(this.page * this.limit, this.limit);
+  }
 
-  loadMore = () => this.page.update((value) => value + 1);
+  loadMore = () => {
+    this.page += 1;
+    this.pokemonService.getPokemons(this.page * this.limit, this.limit);
+  };
 }

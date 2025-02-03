@@ -1,4 +1,11 @@
-import { Component, computed, effect, inject, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  input,
+  untracked,
+} from '@angular/core';
 import { PokemonService } from '../../services';
 import { TYPES } from '../../utils';
 
@@ -19,7 +26,8 @@ export class PokemonCardComponent {
 
   constructor() {
     effect(() => {
-      this.pokemonService.getPokemonById(this.id());
+      // Untrack so it doesn't execute when updating signals inside method
+      untracked(() => this.pokemonService.getPokemonById(this.id()));
     });
   }
 }

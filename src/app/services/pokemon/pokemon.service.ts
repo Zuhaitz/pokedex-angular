@@ -17,6 +17,13 @@ export class PokemonService {
     pokemons: new Map<number, Pokemon>(),
   });
 
+  clear() {
+    this.state.set({
+      isLoading: false,
+      pokemons: new Map<number, Pokemon>(),
+    });
+  }
+
   getState() {
     return {
       pokemons: Array.from(this.state().pokemons.values()),
@@ -29,63 +36,59 @@ export class PokemonService {
   }
 
   getPokemons(offset: number = 0, limit: number = 20): void {
-    untracked(() => {
-      this.state.set({ ...this.state(), isLoading: true });
+    this.state.set({ ...this.state(), isLoading: true });
 
-      this.http
-        .get<PokemonsPage>(this.apiUrl, {
-          params: { offset, limit },
-        })
-        .pipe(
-          retry(2),
-          catchError((err) => {
-            console.error(err);
-            this.state.set({ ...this.state(), isLoading: false });
-            return throwError(() => new Error("Couldn't load pokemons"));
-          }),
-          map((pokemons: PokemonsPage) => pokemonListAdapter(pokemons)),
-        )
-        .subscribe((res) => {
-          // Empty list before getting new page
-          // this.state().pokemons.clear();
+    this.http
+      .get<PokemonsPage>(this.apiUrl, {
+        params: { offset, limit },
+      })
+      .pipe(
+        retry(2),
+        catchError((err) => {
+          console.error(err);
+          this.state.set({ ...this.state(), isLoading: false });
+          return throwError(() => new Error("Couldn't load pokemons"));
+        }),
+        map((pokemons: PokemonsPage) => pokemonListAdapter(pokemons)),
+      )
+      .subscribe((res) => {
+        // Empty list before getting new page
+        // this.state().pokemons.clear();
 
-          res.forEach((pokemon) =>
-            this.state().pokemons.set(pokemon.id, pokemon),
-          );
+        res.forEach((pokemon) =>
+          this.state().pokemons.set(pokemon.id, pokemon),
+        );
 
-          // To notify everyone to update
-          this.state.set({
-            pokemons: this.state().pokemons,
-            isLoading: true,
-          });
+        // To notify everyone to update
+        this.state.set({
+          pokemons: this.state().pokemons,
+          isLoading: true,
         });
-    });
+      });
   }
 
   getPokemonById(id: number): void {
-    untracked(() => {
-      this.state.set({ ...this.state(), isLoading: true });
+    this.state.set({ ...this.state(), isLoading: true });
 
-      this.http
-        .get<Pokemon>(this.apiUrl + id)
-        .pipe(
-          retry(2),
-          catchError((err) => {
-            console.error(err);
-            this.state.set({ ...this.state(), isLoading: false });
-            return throwError(() => new Error("Couldn't load pokemon data"));
-          }),
-          map((pokemon: Pokemon) => pokemonAdapter(pokemon)),
-        )
-        .subscribe((res) => {
-          this.state().pokemons.set(id, res);
+    this.http
+      .get<Pokemon>(this.apiUrl + id)
+      .pipe(
+        retry(2),
+        catchError((err) => {
+          console.error(err);
+          this.state.set({ ...this.state(), isLoading: false });
+          return throwError(() => new Error("Couldn't load pokemon data"));
+        }),
+        map((pokemon: Pokemon) => pokemonAdapter(pokemon)),
+      )
+      .subscribe((res) => {
+        this.state().pokemons.set(id, res);
 
-          // To notify everyone to update
-          this.state.set({
-            pokemons: this.state().pokemons,
-            isLoading: false,
-          });
+        // To notify everyone to update
+        this.state.set({
+          pokemons: this.state().pokemons,
+          isLoading: false,
         });
-    });
+      });
   }
 }
