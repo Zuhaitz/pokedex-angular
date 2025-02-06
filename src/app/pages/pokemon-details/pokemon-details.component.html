@@ -1,5 +1,5 @@
 <section class="pokemon-nav">
-  @if (prevNext().previous && prevNext().next) {
+  @if (prevNext().previous.id && prevNext().next.id) {
     <div class="pokemon-nav__links">
       <div (click)="goToPokemon(prevNext().previous.id)">
         <p>N.º {{ prevNext().previous.id.toString().padStart(4, "0") }}</p>
@@ -15,7 +15,9 @@
 
   <div class="pokemon-nav__title">
     <p>{{ pokemon().name }}</p>
-    <p>N.º {{ pokemon().id.toString().padStart(4, "0") }}</p>
+    @if (pokemon().id) {
+      <p>N.º {{ pokemon().id.toString().padStart(4, "0") }}</p>
+    }
   </div>
 </section>
 
