@@ -1,6 +1,7 @@
 @layer component {
   .pokedex {
     width: min(1280px, 100%);
+    min-height: 80vh;
     margin: auto;
     background-color: white;
   }

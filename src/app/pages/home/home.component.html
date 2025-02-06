@@ -1,10 +1,17 @@
 <section class="pokedex">
   @defer {
     <pokedex [pokemons]="pokemonState().pokemons" />
-    <div class="load-btn">
-      <button (click)="loadMore()" [disabled]="pokemonState().isLoading">
-        Load More
-      </button>
-    </div>
+
+    @if (pokemonState().isLoading) {
+      <load-icon />
+    } @else {
+      <div class="load-btn">
+        <button (click)="loadMore()" [disabled]="pokemonState().isLoading">
+          Load More
+        </button>
+      </div>
+    }
+  } @placeholder (minimum 200ms) {
+    <load-icon />
   }
 </section>

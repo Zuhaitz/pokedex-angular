@@ -1,0 +1,25 @@
+@layer components {
+  .load-icon {
+    margin: auto;
+    justify-items: center;
+    padding: 20px;
+
+    img {
+      width: 32px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+
+      animation: spin-anim 2s linear infinite;
+    }
+  }
+}
+
+@keyframes spin-anim {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}

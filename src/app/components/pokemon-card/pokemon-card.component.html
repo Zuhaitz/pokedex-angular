@@ -17,10 +17,14 @@
     <p class="pokemon-card__name">{{ pokemon()?.name }}</p>
 
     <div class="pokemon-card__types">
-      @for (type of pokemon()?.types; track type.id) {
-        <p [style]="{ 'background-color': types[type.name] }">
-          {{ type.name }}
-        </p>
+      @if (pokemon()?.types) {
+        @for (type of pokemon()?.types; track type.id) {
+          <p [style]="{ 'background-color': types[type.name] }">
+            {{ type.name }}
+          </p>
+        }
+      } @else {
+        <p [style]="{ 'background-color': types['normal'] }">-</p>
       }
     </div>
   </div>

@@ -4,14 +4,14 @@ import {
   computed,
   effect,
   inject,
-  signal,
+  untracked,
 } from '@angular/core';
 import { PokemonService } from '../../services';
-import { PokedexComponent } from '../../components';
+import { LoadIconComponent, PokedexComponent } from '../../components';
 
 @Component({
   selector: 'app-home',
-  imports: [PokedexComponent],
+  imports: [PokedexComponent, LoadIconComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,8 +24,12 @@ export class HomeComponent {
   pokemonState = computed(() => this.pokemonService.getState());
 
   constructor() {
-    this.pokemonService.clear();
-    this.pokemonService.getPokemons(this.page * this.limit, this.limit);
+    effect(() => {
+      untracked(() => {
+        this.pokemonService.clear();
+        this.pokemonService.getPokemons(this.page * this.limit, this.limit);
+      });
+    });
   }
 
   loadMore = () => {
