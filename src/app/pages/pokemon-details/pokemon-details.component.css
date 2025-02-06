@@ -1,7 +1,118 @@
 @layer component {
+  .pokemon-nav {
+    position: relative;
+    overflow-x: clip;
+  }
+
+  .pokemon-nav__links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    div {
+      cursor: pointer;
+      width: 100%;
+      height: 110px;
+      padding: 15px 20px;
+
+      display: flex;
+      /* align-items: center; */
+      justify-content: end;
+      gap: 4px;
+
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: capitalize;
+
+      color: white;
+      background-color: gray;
+
+      &:nth-child(2) {
+        justify-content: start;
+        flex-direction: row-reverse;
+      }
+
+      p:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+
+  .pokemon-nav__title {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    width: min(1000px, 60%);
+    height: 51px;
+
+    padding: 10px 20px;
+
+    font-size: 1.8rem;
+    text-align: center;
+    text-transform: capitalize;
+    line-height: 1.5rem;
+
+    background-color: white;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      height: 52px;
+      width: 75px;
+
+      background: transparent
+        url(https://assets.pokemon.com/static2/_ui/img/chrome/notches/notch-white-xxl.png)
+        no-repeat 0 0;
+    }
+
+    &::before {
+      left: -75px;
+    }
+
+    &::after {
+      background-position: right top;
+      right: -75px;
+    }
+
+    p:nth-child(2) {
+      color: #616161;
+    }
+  }
+
   .pokemon-data {
     width: min(1280px, 100%);
     margin: auto;
     background-color: white;
+  }
+
+  @media (min-width: 640px) {
+    .pokemon-nav__links > div {
+      p:nth-child(1) {
+        color: #d4d4d4;
+      }
+
+      p:nth-child(2) {
+        display: block;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pokemon-nav__links > div {
+      &:hover {
+        background-color: #30a7d7;
+      }
+    }
   }
 }

@@ -1,5 +1,12 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  signal,
+  untracked,
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from '../../services';
 
 @Component({
@@ -9,14 +16,24 @@ import { PokemonService } from '../../services';
   styleUrl: './pokemon-details.component.css',
 })
 export class PokemonDetailsComponent {
+  router = inject(Router);
   route = inject(ActivatedRoute);
   pokemonService = inject(PokemonService);
 
   id = signal(0);
   pokemon = computed(() => this.pokemonService.getPokemonData());
+  prevNext = computed(() => this.pokemonService.getPreviousNext());
 
   constructor() {
-    this.id.set(this.route.snapshot.params['id']);
-    this.pokemonService.getPokemonDataById(this.id());
+    this.route.params.subscribe((params) => {
+      this.id.set(params['id']);
+      this.pokemonService.getPokemonDataById(this.id());
+      this.pokemonService.getPreviousPokemon(this.id());
+      this.pokemonService.getNextPokemon(this.id());
+    });
+  }
+
+  goToPokemon(id: number) {
+    this.router.navigateByUrl('/pokemon/' + id);
   }
 }
