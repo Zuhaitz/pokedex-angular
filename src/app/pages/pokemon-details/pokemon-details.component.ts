@@ -8,10 +8,11 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from '../../services';
+import { StatBarComponent } from '../../components/stat-bar/stat-bar.component';
 
 @Component({
   selector: 'app-pokemon-details',
-  imports: [],
+  imports: [StatBarComponent],
   templateUrl: './pokemon-details.component.html',
   styleUrl: './pokemon-details.component.css',
 })

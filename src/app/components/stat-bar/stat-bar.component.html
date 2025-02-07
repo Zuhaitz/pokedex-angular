@@ -1,0 +1,13 @@
+<p class="stat__num">{{ stat().base_stat }}</p>
+<!-- [style]="{
+    background:
+      'linear-gradient(to top, #30a7d7 ' +
+      percentage() +
+      '%, white ' +
+      percentage() +
+      '%)',
+  }" -->
+<div class="stat__bar">
+  <span [style]="{ height: percentage() + '%' }"></span>
+</div>
+<p class="stat__name">{{ stat().name.replace("-", " ") }}</p>

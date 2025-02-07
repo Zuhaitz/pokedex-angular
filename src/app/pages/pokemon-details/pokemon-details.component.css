@@ -96,6 +96,28 @@
     background-color: white;
   }
 
+  .pokemon-stats {
+    padding: 20px;
+    padding-bottom: 40px;
+    margin: auto;
+
+    width: min(640px, 100%);
+
+    background-color: #5a5a5a;
+
+    p {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      color: white;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+  }
+
   @media (min-width: 640px) {
     .pokemon-nav__links > div {
       p:nth-child(1) {
@@ -106,15 +128,9 @@
         display: block;
       }
     }
-  }
-}
 
-.test {
-  position: relative;
-  width: 100%;
-  height: 242px;
-  mask: url("../../../assets/icons/mask.png") bottom;
-  /* background-color: aqua; */
-  background: linear-gradient(to top, blue 50%, aqua 50%);
-  /* background-color: aqua; */
+    .pokemon-stats {
+      border-radius: 1rem;
+    }
+  }
 }
