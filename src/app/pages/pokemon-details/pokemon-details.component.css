@@ -107,12 +107,14 @@
       }
     }
   }
+}
 
-  @media (min-width: 1024px) {
-    .pokemon-nav__links > div {
-      &:hover {
-        background-color: #30a7d7;
-      }
-    }
-  }
+.test {
+  position: relative;
+  width: 100%;
+  height: 242px;
+  mask: url("../../../assets/icons/mask.png") bottom;
+  /* background-color: aqua; */
+  background: linear-gradient(to top, blue 50%, aqua 50%);
+  /* background-color: aqua; */
 }

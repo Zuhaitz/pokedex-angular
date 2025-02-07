@@ -9,12 +9,6 @@
     overflow: hidden;
     border-radius: 10px;
     transition: transform 0.1s linear;
-
-    &:hover {
-      transform: translateY(-2%);
-      outline: 2px solid #818181;
-      outline-offset: 5px;
-    }
   }
 
   .pokemon-card > .pokemon-card__icon {
@@ -58,6 +52,14 @@
   @media (min-width: 1024px) {
     .pokemon-card {
       width: 192px;
+    }
+  }
+
+  @media (hover: hover) {
+    .pokemon-card:hover {
+      transform: translateY(-2%);
+      outline: 2px solid #818181;
+      outline-offset: 5px;
     }
   }
 }
