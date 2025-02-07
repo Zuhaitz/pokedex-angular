@@ -133,4 +133,10 @@
       border-radius: 1rem;
     }
   }
+
+  @media (hover: hover) {
+    .pokemon-nav__links > div:hover {
+      background-color: #30a7d7;
+    }
+  }
 }
